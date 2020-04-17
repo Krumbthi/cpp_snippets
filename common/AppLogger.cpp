@@ -13,18 +13,7 @@ AppLogger::~AppLogger()
             LogFile.close();
         }
     }
-
-#if 0
-    this->Release();
-#endif
 }
-
-#if 0
-void AppLogger::Release()
-{
-    pInstance = nullptr;
-}
-#endif
 
 void AppLogger::SetTag(std::string tag)
 {
@@ -47,8 +36,6 @@ void AppLogger::Msg(const std::string fmt, ...)
     vsnprintf(&buff[0], buff.size(), fmt.c_str(), args);
 
     if (FileLogging) {
-        //fprintf(AppLogger::logFile, "%s (Line %d): %s \n", __FILE__, __LINE__, acText);
-        //Logger::file << buff.data();
         LogFile << this->GetTimestamp().count() << ": " << Tag << "\t: " << buff.data() << std::endl;
     }
 

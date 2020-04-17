@@ -11,9 +11,7 @@ FrameDispatcher::FrameDispatcher()
 
 void FrameDispatcher::SourceFWVersion(uint8_t* dataBuf) const
 {
-	Logger->Msg("---------------------------");
     Logger->Msg("SourceFWVersion");
-	Logger->Msg("---------------------------");
 }
 
 std::string FrameDispatcher::ConvertToString(uint8_t* a, int size)
