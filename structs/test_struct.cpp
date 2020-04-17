@@ -2,7 +2,7 @@
 #include <memory>
 #include <iostream>
 #include <cstring>
-#include "defs.h"
+#include "../common/defs.h"
 
 /**
  * Macro definitions
