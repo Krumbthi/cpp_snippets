@@ -14,7 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(Qt5Core)
 find_package(Qt5Widgets)
 
-add_executable(cb_test
+add_executable(${PROJECT_NAME}
     main.cpp
     ${CMAKE_SOURCE_DIR}/../../common/AppLogger.cpp
     ${CMAKE_SOURCE_DIR}/../../common/FrameDispatcher.cpp

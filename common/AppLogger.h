@@ -36,17 +36,17 @@ namespace Logging {
 class AppLogger
 {
 public:
-	AppLogger() = default;
+    AppLogger() = default;
 	
-	AppLogger(const AppLogger&) = delete;
-	AppLogger& operator=(const AppLogger&) = delete;
-	AppLogger(AppLogger&&) = delete;
-	AppLogger& operator=(AppLogger&&) = delete;
+    AppLogger(const AppLogger&) = delete;
+    AppLogger& operator=(const AppLogger&) = delete;
+    AppLogger(AppLogger&&) = delete;
+    AppLogger& operator=(AppLogger&&) = delete;
 
-	~AppLogger();
+    ~AppLogger();
 	
-    void		SetTag(std::string tag);
-    void 		SetLogFile(std::string fileName);
+    void	SetTag(std::string tag);
+    void 	SetLogFile(std::string fileName);
 	
     void        Msg(const std::string fmt, ...);
     void        Msg(const char* _log, ...);
@@ -54,7 +54,7 @@ public:
 private:
     milliseconds    GetTimestamp() const;
     bool            FileLogging;
-    std::ofstream	LogFile;
-    std::string		Tag;
+    std::ofstream   LogFile;
+    std::string     Tag;
 };
 }

@@ -25,14 +25,6 @@ IUsbAccessLayer::~IUsbAccessLayer()
     }
 }
 
-#if 0
-void IUsbAccessLayer::closeEvent(QCloseEvent *event)
-{
-    Q_UNUSED(event)
-    CloseDll();
-}
-#endif
-
 void IUsbAccessLayer::InitDLL()
 {
     Logger->Msg("Init Dll");
@@ -43,9 +35,9 @@ void IUsbAccessLayer::InitDLL()
                 });
 }
 
-void IUsbAccessLayer::RegisterForBFChange(int winHandle, int noOfConDevs)
+void IUsbAccessLayer::RegisterForBFChange(int winHandle, int timerId)
 {
-    TimerID = noOfConDevs;
+    TimerID = timerId;
     Logger->Msg("Register Window handle: %d", winHandle);
     CloseDll();
 }

@@ -41,20 +41,6 @@ constexpr auto ARRAY_SIZE(T1 a) {
 }
 #endif
 
-// old style macros ------------------------------------------------------------------------------------------
-// #define MAKEWORD(a, b)  		(((uint16_t)(((uint8_t)(a) << 8)) | ((uint16_t) ( (uint8_t) (b)))))
-// #define LO8(x)                  ((uint8_t) ((x) & 0xFFu))
-// #define HI8(x)                  ((uint8_t) ((uint16_t)(x) >> 8))
-// #define LO16(x)                 ((uint16_t) ((x) & 0xFFFFu))
-// #define HI16(x)                 ((uint16_t) ((uint32_t)(x) >> 16))
-
-/* Swap the byte ordering of 32 bit value */
-// #define SWAP_ENDIAN32(x)          ((uint32_t)((((x) >> 24) & 0x000000FFu) | (((x) & 0x00FF0000u) >> 8) | (((x) & 0x0000FF00u) << 8) | ((x) << 24)))
-
-/* Swap the byte ordering of 16 bit value */
-// #define SWAP_ENDIAN16(x)      	((uint16_t)(((x) << 8) | (((x) >> 8) & 0x00FFu)))
-
-
 namespace Data {
 
 using namespace ::Logging;
@@ -65,18 +51,18 @@ using namespace ::Logging;
 class FrameDispatcher
 {
 public:
-	FrameDispatcher();
+    FrameDispatcher();
     FrameDispatcher(const FrameDispatcher&) = delete;
     FrameDispatcher& operator=(const FrameDispatcher&) = delete;
     FrameDispatcher(FrameDispatcher&&) = delete;
     FrameDispatcher& operator=(FrameDispatcher&&) = delete;
-	~FrameDispatcher() = default;
+    ~FrameDispatcher() = default;
 
-	void SourceFWVersion(uint8_t* dataBuf) const;
+    void SourceFWVersion(uint8_t* dataBuf) const;
 
 private:
-	static std::string ConvertToString(uint8_t* a, int size);
-	std::unique_ptr<AppLogger>  Logger;
+    static std::string ConvertToString(uint8_t* a, int size);
+    std::unique_ptr<AppLogger>  Logger;
 };
 
 }
