@@ -31,3 +31,6 @@
 *.out
 *.app
 test_struct
+build
+build_clang-Debug
+
