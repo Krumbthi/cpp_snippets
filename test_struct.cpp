@@ -129,6 +129,34 @@ void buf_to_struct_man(OneRoiResult* pResult, size_t bufSize)
     }
 }
 
+template<size_t row, size_t col>
+void write_data_frame(void* pBuffer, size_t bufSize, uint8_t (&dataFrame)[row][col])
+{
+    size_t i = 0, j = 0;
+    for(; i<row; i++) {
+        for (; j<col; j++) {
+            dataFrame[i][j] = *((uint8_t*)pBuffer+j);
+        }
+    }
+}
+
+template<size_t row, size_t col>
+void print_data_frame(uint8_t (&dataFrame)[row][col])
+{
+    std::cout << "Print dataframe ..." << std::endl; 
+    std::cout << "Rows: " << row << "; Cols: " << col << std::endl;
+
+    for (size_t i=0; i < row; i++) {
+        std::cout << "data[" << i <<"]";
+        for (size_t j=0; j < col; j++) {
+            std::cout << "[" << j << "]: " << std::hex << dataFrame[i][j] << "; ";
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << "done" << std::endl;
+}
+
 int main()
 {
     auto pResult = std::make_unique<OneRoiResult[]>(STRUCT_BUFFER_SIZE);
@@ -162,6 +190,17 @@ int main()
             << std::endl;
     }
 
+    uint8_t dataFrame[3][8] = { { } };
+    uint8_t buffer[24] = {0x41, 0x42, 0x43, 0x45, 
+                          0x26, 0x27, 0x28, 0x29, 
+                          0x0A, 0x0B, 0x0C, 0x0D, 
+                          0x0E, 0x0F, 0x10, 0x12, 
+                          0x13, 0x14, 0x15, 0x16, 
+                          0x17, 0x18, 0x19, 0x1A };
+
+    write_data_frame(buffer, sizeof(buffer), dataFrame);
+    print_data_frame(dataFrame);
+    
     return EXIT_SUCCESS;
 }
 
