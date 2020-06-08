@@ -9,8 +9,8 @@ int main()
     ifstream infile;
     ofstream outfile;
     
-    infile.open("/path/to/file.hex", ios::binary | ios::in);
-    outfile.open("/path/to/hex_dump.hex", ios::binary | ios::out);
+    infile.open("/mnt/projects/SpArcfire/LoaderFiles/Higgs_v1.1.7-176-d1fe53e.ldr", ios::binary | ios::in);
+    // outfile.open("/mnt/projects/tmp/hex_dump.ldr", ios::binary | ios::out);
     
     if (infile) {
         // get length of file:
